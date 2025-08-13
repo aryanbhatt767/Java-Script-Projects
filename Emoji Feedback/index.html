@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Feedback</title>
+
+    <style>
+        .emoji {
+            cursor: pointer;
+            font-size: 2rem;
+            padding: 0.5rem;
+            transition: transform 0.2s;
+        }
+
+        .emoji:hover
+ {
+    transform: scale(1.2);
+
+ 
+}
+.selected  {
+    border: 2px  solid orange;
+    border-radius: 50%;
+}   
+ </style>
+</head>
+<body>
+    
+
+    <section class="emoji-container">
+        <span class="emoji" data-rating="1">❤😀</span>
+        <span class="emoji" data-rating="2">😊</span>
+        <span class="emoji" data-rating="3">☹️</span>
+        <span class="emoji" data-rating="4">🙁</span>
+        <span class="emoji" data-rating="5">😍</span>
+    </section>
+
+    <p id="feedback-message"></p>
+
+    <script>
+
+        window.onload = function() { 
+            
+            const emojis = document.querySelectorAll('.emoji');
+
+        emojis.forEach((emoji) => {
+            emoji.addEventListener("click",showFeedback) ;
+
+        });
+const arr = ["Sorry to hear that !","We are still improving","Thanks for the feedback",
+            "Hope u liked it,Continue to use our services","Glad u liked it !"];
+
+       function showFeedback(event) {
+        emojis.forEach(emoji => 
+            emoji.classList.remove("selected"));
+
+            event.target.classList.add("selected");
+
+            const rating = parseInt(event.target.getAttribute("data-rating"));
+
+        
+            // how do i get data rating
+
+            const message = arr[rating -1];
+
+            document.getElementById("feedback-message").textContent = message;
+            
+        
+
+
+                    }
+                };
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2 >DigitalClock</h2>
+    <div id="clock" style="font-size: 2rem; font-family: monospace;"></div>
+    <div id="day" style="font-size: 1.2rem; font-family: italic;"></div>
+    <div id="year" style="font-size: 1.2rem; font-family: italic;"></div>
+
+
+
+    <script>
+
+        function updateTime() {
+
+        let now = new Date();
+
+        let date = now.getDate();
+        let month = now.getMonth()+1;
+        let year = now.getFullYear();
+
+        let format = `${date}/${month}/${year}`;
+
+
+        let hours = now.getHours();
+        let min = now.getMinutes();
+        let sec = now.getSeconds();
+
+        hours = hours<10?"0"+hours:hours;
+        min = min<10?"0"+min:min;
+        sec = sec<10?"0"+sec:sec;
+
+        let currentTime = `${hours}:${min}:${sec}`;
+
+        document.getElementById("clock").textContent = currentTime;
+
+        const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+        const today = days[now.getDay()]; 
+
+        document.getElementById("day").textContent = `Today is ${today}`;
+
+        document.getElementById("year").textContent = format;
+           }
+
+
+        updateTime();
+
+        setInterval(updateTime(),1000);
+
+
+
+
+    </script>
+    
+</body>
+</html>

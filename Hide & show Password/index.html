@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+</head>
+<body>
+
+    <div class="container">
+        <input type="password" placeholder="Password"/>
+
+        <div class="eye-container">
+            <i class="fa fa-eye" aria-hidden="true" id="eye-icon"></i>
+        </div>
+    </div>
+
+    <script>
+
+        const input = document.querySelector("input");
+
+        const eye = document.querySelector("#eye-icon");
+
+        eye.addEventListener("click",() => {
+            input.type === "password" ? input.type = "text" : input.type = "password" ;
+        });
+    </script>
+    
+</body>
+</html>

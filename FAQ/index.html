@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+
+    <style>
+
+        .accordion .answer {
+            display: none;
+            padding-left: 10px;
+        }
+
+        .accordion .Question {
+            cursor: pointer;
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        .accordion .answer.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="accordion">
+        <div class="item">
+            <h3 class="Question">What is JS ?</h3>
+            <p class="answer">JS is a scripting language for the web</p>
+        </div>
+        
+        <div class="item">
+            <h3 class="Question">What is DOM ?</h3>
+            <p class="answer">DOM stands for Document object Model</p>
+        </div>
+
+            <div class="item">
+                <h3 class="Question">What is a Event Listener ?</h3>
+                <p class="answer">It listens for user actions like click.hover,etc </p>
+        </div>
+    </div>
+
+    <script>
+
+        const questions = document.querySelectorAll(".Question");
+
+        questions.forEach((q) => {
+            q.addEventListener("click", () => {
+                const answer = q.nextElementSibling;
+                answer.classList.toggle("show");
+            });
+        });
+
+
+
+      </script>
+    
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed Tester</title>
+</head>
+<body>
+
+    <input type="text"   id="input-box" rows="5" cols="50" placeholder="Start writing..." >
+
+    <button id="done">Done</button>
+    <p id="time-taken">Time-Taken = </p>
+    <p id="accuracy">Accuracy % = </p>
+    <p id="Speed">Speed(WPM) = </p>
+    <p id="error"> Error = </p>
+
+   
+   <h4 id="demo">My name is Aryan Bhatt . I am doing B.Tech from G.L. Bajaj</h4>
+   
+
+   <script>
+
+   window.onload = function() { const arr  = ["My name is Aryan Bhatt . I am doing B.Tech from G.L. Bajaj",
+    "I live in meerut which is known for its crimes and hooligans.",
+    "I like to create something useful and want to contribute something to the society",
+"I have great ambitions in life but I think sometimes i feel quite lazy which is part of life",
+ ] ;
+
+const sentenceDisplay = document.getElementById("demo");
+
+const randomIndex  = Math.floor(Math.random()*arr.length);
+const  sentence = arr[randomIndex];
+
+sentenceDisplay.textContent = sentence;
+
+const inputBox = document.getElementById("input-box");
+let startTime,endTime;
+let timeTaken = document.getElementById("time-taken");
+
+
+inputBox.addEventListener("input", () => {
+    if(inputBox.value.length === 1)
+    startTime = new Date();
+})
+
+let doneBtn = document.getElementById("done");
+doneBtn.style.backgroundColor = "black";
+doneBtn.style.color = "white";
+
+
+doneBtn.addEventListener("click" , () => {
+    endTime = new Date();
+   
+    const userInput  = inputBox.value;
+
+   let timeinSec =  (endTime  - startTime) / 1000;
+   timeTaken.textContent = `Time Taken:${timeinSec.toFixed(2)} sec`;
+
+   const wordsTyped = userInput.trim().split(/\s+/).length;
+   const wpm = (wordsTyped/timeinSec)*60;
+
+   document.getElementById("Speed").textContent  = `Speed: ${Math.round(wpm)} WPM`;
+
+   startTime = null;
+
+   let errorCount = 0;
+   const minLength = Math.min(userInput.length,sentence.length);
+
+   for(let i=0; i < minLength;i++) {
+    if(userInput[i] !== sentence[i])
+    errorCount++;
+   }
+
+   errorCount += Math.abs(sentence.length-userInput.length);
+
+   document.getElementById("error").textContent = `Error = ${errorCount}`;
+
+   const accuracy = ((1-errorCount/sentence.length)*100).toFixed(2);
+
+   document.getElementById("accuracy").textContent = `Accuracy  = ${accuracy}%`;
+});
+
+   }
+
+   </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="nextBtn">Next</button>
+    <button id="prevBtn">Prev</button>
+
+    <img id="slider"src="img1.jpg"  width="500px" height="500px">
+
+    <script>
+
+let arr = ["img1.jpg","img2.jpg","img3.jpg","img4.jpg"];
+
+        const img = document.getElementById("slider");
+
+
+
+        const nextBtn = document.getElementById("nextBtn");
+        const prevBtn = document.getElementById("prevBtn");
+
+        let currIndex = 0;
+
+        nextBtn.addEventListener("click",() =>{
+            currIndex = (currIndex+1)%arr.length;
+
+            img.src=arr[currIndex];
+            
+        });
+
+        prevBtn.addEventListener("click",() =>{
+            currIndex = (currIndex - 1 + arr.length)%arr.length;
+
+            img.src=arr[currIndex];
+        });
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <textarea id="text" rows="5" cols="40" maxlength="100" placeholder="Type something..."></textarea>
+
+    <p>Characters:<span id="count">0</span></p>
+    <script>
+       let textArea = document.getElementById("text");
+      
+
+     
+
+       let countDisplay = document.getElementById("count")
+       textArea.addEventListener("input",function(){
+        let length  = textArea.value.length;
+
+        if(length>100) {
+        textArea.value=textArea.value.slice(0,100);
+        return ;
+       }
+       countDisplay.textContent=length;
+
+        if(textArea.value.length>90)
+        textArea.style.color="red";
+
+        if(textArea.value.length===100)
+        alert("Max limit is reached");
+       });
+       
+        </script>
+    
+</body>
+</html>

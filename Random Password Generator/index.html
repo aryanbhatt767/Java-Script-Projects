@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Password Generator</title>
+</head>
+<body>
+
+    <div class="container">
+
+        <h2>Random Password Generator</h2>
+
+    <input type="text" placeholder="Create your Password" id="password" />
+    <input type="text" placeholder="paste" id="paste" />
+
+    <div class="buttons">
+
+    <button class="generate"> Generate</button>
+    <button class="copy">Copy</button>
+    <button class="paste">Paste</button>
+    </div>   
+
+      </div>
+
+    <script>
+
+     window.onload = function() {  
+        let genBtn = document.querySelector(".generate"); 
+       let copyBtn = document.querySelector(".copy"); 
+       let pasteBtn = document.querySelector(".paste"); 
+
+       genBtn.addEventListener("click",() => genPassword() );
+       copyBtn.addEventListener("click",() => copyPassword() );
+       pasteBtn.addEventListener("click",() => pastePassword() );
+
+
+       function genPassword() {
+
+        let chars = "0123456789qwertyuiopasdfghjklzxcvbnm!@#$%^&*()QWERTYUIOPASDFGHJKLMNBVCXZ";
+
+        passwordLength = 7;
+        password="";
+
+        for(let i=0;i<=passwordLength;i++) 
+       {
+        let randomIndex = Math.floor(Math.random()*chars.length);  
+
+        password += chars.substring(randomIndex,randomIndex+1);
+         }
+         document.getElementById("password").value = password;
+
+       }
+
+       function copyPassword() {
+        let copyText  = document.getElementById("password");
+        copyText.select();
+        document.execCommand("copy");
+       }
+
+       
+       function pastePassword() {
+        let pasteText = document.getElementById("password").value;;
+     
+        
+        document.getElementById("paste").value= pasteText;
+       }
+    }
+    </script>
+    
+</body>
+</html>

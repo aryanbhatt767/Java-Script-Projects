@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Jokes Generator </title>
+</head>
+<body>
+    
+     <div id="joke">Click button to hear a Joke</div>   
+    <button id="generate">Joke</button>
+
+    <script>
+        const jokeDiv = document.getElementById('joke');
+        const jokeBtn = document.getElementById("generate");
+
+        async function getJoke() {
+            jokeDiv.textContent = "Loading...";
+
+            const response = await fetch('https://icanhazdadjoke.com/' ,{
+                headers : {
+                    Accept : 'application/json'
+                }
+            });
+
+            const data = await response.json();
+            jokeDiv.textContent = data.joke;
+            
+        }
+        jokeBtn.addEventListener("click",getJoke());
+    </script>
+    
+</body>
+</html>
